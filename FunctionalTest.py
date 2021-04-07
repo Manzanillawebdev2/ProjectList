@@ -8,15 +8,15 @@ import unittest
 class PageTest(unittest.TestCase):
 
 	def setUp(self):
-	   self.browser.quit()
+	   self.browser = webdriver.Firefox()
 	   
 	def tearDown(self):
 	   self.browser.quit()
 	   
 	def test_browser_title(self):
 	   self.browser.get('http://localhost:8000')
-	   self.assertIn('Project List', self.browser.title)
-	   self.fail('Finish the test NOW!!!????')
+	   self.assertIn('"BMICalculator"', self.browser.title)
+	   #self.fail('Finish the test NOW!!!????')
 	   
 	   
 if __name__== '__main__':
