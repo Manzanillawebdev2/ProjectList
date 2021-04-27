@@ -3,22 +3,35 @@
     <title>"BMICalculator"</title>
   
 </head>
-<body>
-    <h1>Body Mass Index Calculator</h1>
+<body style="background: linear-gradient(to bottom, #ffff99 0%, #ff9966 100%);padding-bottom: 215px;">
+    <h1 style=" text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,-1px -1px 0 #000; color:#F8F8FF;">Body Mass Index Calculator</h1>
     
-    <form>
-    
-    <input id="height" name="height" type="text" placeholder="what is your height (in inches)?"> <br><br>
-    <input id="weight" name="weight" type="text" placeholder="what is your weight (in kg)?"> <br>
+    <form method="POST">
+     <input id="name" name="name" type="text" style= "border-style: outset; height: 35px" placeholder="type your name here"> <br><br>
+    <input id="age" name="age" type="text" style= "border-style: outset; height: 35px" placeholder="type your age"> <br><br>
+    <input id="height" name="height" type="text" style= "border-style: outset; height: 35px" placeholder="what is your height (in cm)?"> <br><br>
+    <input id="weight" name="weight" type="text" style= "border-style: outset; height: 35px" placeholder="what is your weight (in kg)?"> <br><br>
     <input type="submit" id="enter" name="enter" value="enter">
-    
-   
+    <input type="hidden">
+    {% csrf_token %}
+   <table id="tableko">
+   <tr style="text-align:center; margin-left:20px">
+	   <th> Age </th>
+	   <th> Height </th>
+	   <th> Weight </th>
+    </tr>
+   <tr>
+   <td>1: {{ Age }}</td>
+   <td>{{ Height }}</td>
+   <td>{{ Weight }}</td>
+   </tr>
+   </table>
     </form>
     
     
     <p>Your BMI
- is: <span id="output">?</span></p>
+ is: <span id="output"></span></p>
 
-    <p>This means you are: value = "output" </p> 
+    <p>This means you are: </p> 
 </body>
 </html>
