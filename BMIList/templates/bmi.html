@@ -3,28 +3,30 @@
     <title>"BMICalculator"</title>
   
 </head>
-<body style="background: linear-gradient(to bottom, #ffff99 0%, #ff9966 100%);padding-bottom: 215px;">
+<body style="text-align: center; background: linear-gradient(to bottom, #ffff99 0%, #ff9966 100%);padding-bottom: 215px;">
     <h1 style=" text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,-1px -1px 0 #000; color:#F8F8FF;">Body Mass Index Calculator</h1>
     
     <form method="POST">
      <input id="name" name="name" type="text" style= "border-style: outset; height: 35px" placeholder="type your name here"> <br><br>
     <input id="age" name="age" type="text" style= "border-style: outset; height: 35px" placeholder="type your age"> <br><br>
+    <input id="gender" name="gender" type="text" style= "border-style: outset; height: 35px" placeholder="male or female"> <br><br>
     <input id="height" name="height" type="text" style= "border-style: outset; height: 35px" placeholder="what is your height (in cm)?"> <br><br>
     <input id="weight" name="weight" type="text" style= "border-style: outset; height: 35px" placeholder="what is your weight (in kg)?"> <br><br>
-    <input type="submit" id="enter" name="enter" value="enter">
+    <input type="submit" id="enter" name="enter" value="enter"> <br><br>
     <input type="hidden">
     {% csrf_token %}
-   <table id="tableko">
-   <tr style="text-align:center; margin-left:20px">
+   <table id="tableko" style="text-align: center ; margin: 0 auto">
+   	<tr style="text-align:center">
 	   <th> Age </th>
+	   <th> Gender </th>
 	   <th> Height </th>
 	   <th> Weight </th>
-    </tr>
-   <tr>
-   <td>1: {{ Age }}</td>
-   <td>{{ Height }}</td>
-   <td>{{ Weight }}</td>
-   </tr>
+    	</tr>
+        {% for item in Age %}
+   	<tr>
+   		<td>{{ forloop.counter }}: {{ item.text }}</td>
+   	</tr>
+   	{% endfor %}
    </table>
     </form>
     
@@ -33,5 +35,39 @@
  is: <span id="output"></span></p>
 
     <p>This means you are: </p> 
+<script type="text/javascript">
+        function computeBMI()
+        {
+            //Obtain user inputs
+            var height=Number(document.getElementById("height").value);
+           // var heightunits=document.getElementById("heightunits").value;
+            var weight=Number(document.getElementById("weight").value);
+           // var weightunits=document.getElementById("weightunits").value;
+
+
+            //Convert all units to metric
+           // if (heightunits=="inches") height/=39.3700787;
+           // if (weightunits=="lb") weight/=2.20462;
+
+            //Perform calculation
+            var BMI
+=weight/Math.pow(height,2);
+
+            //Display result of calculation
+            document.getElementById("output").innerText=Math.round(BMI
+*100)/100;
+
+            if (output<18.5)
+            document.getElementById("comment").value = "Underweight";
+            if (output>=18.5 && output<=25)
+            document.getElementById("comment").value = "Normal";
+            if (output>=25 && output<=30)
+            document.getElementById("comment").value = "Obese";
+            if (output>30)
+            document.getElementById("comment").value = "Overweight";
+            document.getElementById("answer").value = output; 
+        }
+  </script>
+  
 </body>
 </html>
