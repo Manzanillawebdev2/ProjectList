@@ -8,6 +8,7 @@ import unittest
 from selenium.webdriver.common.keys import Keys
 import time
 from django.test import LiveServerTestCase
+from selenium.common.exceptions import WebDriverException
 waitkita = 3
 
 
@@ -27,7 +28,7 @@ class PageTest(LiveServerTestCase):
 	   	rows = table.find_elements_by_tag_name('tr')
 	   	self.assertIn(row_text, [row.text for row in rows])
 	   	return
-	   except(AssertionError.WebDriverException) as e:
+	   except(AssertionError,WebDriverException) as e:
 	   	if time.time()-start_time > waitkita:
 	   		raise e
 	   
@@ -86,11 +87,40 @@ class PageTest(LiveServerTestCase):
            btnenter.click()
            time.sleep(.1)
            self.wait_rows_in_list_table('2: 18')
-'''           table = self.browser.find_element_by_id('tableko')
-           rows = table.find_elements_by_tag_name('tr')
-           self.assertIn('21 156 42',[row.text for row in rows])
-	   #self.fail('Finish the test NOW!!!????')'''
-	   
-	   
+           
+	def test_diff_test_diffuser(self):
+					 self.browser.get(self.live_server_url)
+					 inputage1 = self.browser.find_element_by_id('age')
+					 btnenter = self.browser.find_element_by_id('enter')
+					 time.sleep(.1)
+					 inputage1.send_keys('21')
+					 btnenter.click()
+					 time.sleep(.1)
+					 self.wait_rows_in_list_table('1: 21')
+					 mgm_url = self.browser.current_url
+					 self.assertRegex(mgm_url, 'BMIList/.+')
+					 
+					 self.browser.quit()
+					 self.browser = webdriver.Firefox()
+					 self.browser.get(self.live_server_url)
+					 mmBody = self.browser.find_element_by_tag_name('body').text
+					 self.assertNotIn('21', mmBody)
+					 time.sleep(.1)
+					 inputage1 = self.browser.find_element_by_id('age')
+					 btnenter = self.browser.find_element_by_id('enter')
+					 time.sleep(.1)
+					 inputage1.send_keys('21')
+					 btnenter.click()
+					 time.sleep(.1)
+					 self.wait_rows_in_list_table('1: 04')
+					 mgm2_url = self.browser.current_url
+					 self.assertRegex(mgm2_url, 'BMIList/.+')
+					 self.assertNotEqual(mgm_url, mgm2_url)
+					 mmBody = self.browser.find_element_by_tag_name('body').text
+					 self.assertNotIn('21', mmBody)
+					 self.assertIn('04', mmBody)
+					 
+					 
+					 
 #if __name__== '__main__':
 #   unittest.main(warnings='ignore')
