@@ -109,7 +109,7 @@ class PageTest(LiveServerTestCase):
 					 inputage1 = self.browser.find_element_by_id('age')
 					 btnenter = self.browser.find_element_by_id('enter')
 					 time.sleep(.1)
-					 inputage1.send_keys('21')
+					 inputage1.send_keys('04')
 					 btnenter.click()
 					 time.sleep(.1)
 					 self.wait_rows_in_list_table('1: 04')
@@ -117,8 +117,8 @@ class PageTest(LiveServerTestCase):
 					 self.assertRegex(mgm2_url, 'BMIList/.+')
 					 self.assertNotEqual(mgm_url, mgm2_url)
 					 mmBody = self.browser.find_element_by_tag_name('body').text
-					 self.assertNotIn('21', mmBody)
-					 self.assertIn('04', mmBody)
+					 self.assertNotIn('04', mmBody)
+					 self.assertIn('21', mmBody)
 					 
 					 
 					 

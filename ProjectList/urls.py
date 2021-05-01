@@ -21,5 +21,6 @@ from BMIList import views
 urlpatterns = [
     url(r'^$', views.BmiPage, name='bmipage'),
     url(r'^BMIList/mgm_url/$', views.ViewList, name='mgm'),
+    url(r'^BMIList/mgm2_url$', views.NewList, name='Newlist'),
     #path('admin/', admin.site.urls),
 ]
