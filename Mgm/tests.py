@@ -117,8 +117,8 @@ class PageTest(LiveServerTestCase):
 					 self.assertRegex(mgm2_url, 'BMIList/.+')
 					 self.assertNotEqual(mgm_url, mgm2_url)
 					 mmBody = self.browser.find_element_by_tag_name('body').text
-					 self.assertNotIn('04', mmBody)
-					 self.assertIn('21', mmBody)
+					 self.assertIn('04', mmBody)
+					 self.assertNotIn('21', mmBody)
 					 
 					 
 					 

@@ -13,14 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-#from django.contrib import admin
+from django.contrib import admin
 #from django.urls import path
 from django.conf.urls import url
 from BMIList import views
 
+
 urlpatterns = [
     url(r'^$', views.BmiPage, name='bmipage'),
-    url(r'^BMIList/mgm_url/$', views.ViewList, name='mgm'),
+    url('admin/',admin.site.urls),
+    url(r'^BMIList/(\d+)/$', views.ViewList, name='mgm'),
     url(r'^BMIList/mgm2_url$', views.NewList, name='Newlist'),
+    url(r'^BMIList/(\d+)/addItem$', views.AddItem, name='additem'),
     #path('admin/', admin.site.urls),
 ]

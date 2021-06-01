@@ -4,9 +4,9 @@
   
 </head>
 <body style="text-align: center; background: linear-gradient(to bottom, #ffff99 0%, #ff9966 100%);padding-bottom: 215px;">
-    <h1 style=" text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,-1px -1px 0 #000; color:#F8F8FF;">Body Mass Index Calculator</h1>
+    <h1 style=" text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,-1px -1px 0 #000; color:#F8F8FF;">BMI Health Care</h1>
     
-    <form method="POST" action="/BMIList/mgm2_url">
+    <form method="POST" action="/BMIList/{{KId.id}}/addItem">
      <input id="name" name="name" type="text" style= "border-style: outset; height: 35px" placeholder="type your name here"> <br><br>
     <input id="age" name="age" type="text" style= "border-style: outset; height: 35px" placeholder="type your age"> <br><br>
     <input id="gender" name="gender" type="text" style= "border-style: outset; height: 35px" placeholder="male or female"> <br><br>
@@ -22,7 +22,7 @@
 	   <th> Height </th>
 	   <th> Weight </th>
     	</tr>
-        {% for item in Age %}
+        {% for item in KId.item_set.all %}
    	<tr>
    		<td>{{ forloop.counter }}: {{ item.text }}</td>
    	</tr>
