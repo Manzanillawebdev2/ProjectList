@@ -35,7 +35,7 @@ class EProgram(models.Model):
 		
 class CheckStatus(models.Model):
 	SignUp=models.ForeignKey(SignUp,default=None, on_delete=models.CASCADE)
-	Date=models.DateTimeField(default=timezone.now)
+	Date=models.DateTimeField(auto_now_add=True, null=True)
 	CurrentWeight=models.TextField(default="")
 	Remarks=models.TextField(default="")
 	class meta:
