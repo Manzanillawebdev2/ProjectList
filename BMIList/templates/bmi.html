@@ -1,73 +1,90 @@
-<html>
-<head>
-    <title>"BMICalculator"</title>
+	{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+
+    <title>Hustle Buddy</title>
   
-</head>
-<body style="text-align: center; background: linear-gradient(to bottom, #ffff99 0%, #ff9966 100%);padding-bottom: 215px;">
-    <h1 style=" text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,-1px -1px 0 #000; color:#F8F8FF;">Body Mass Index Calculator</h1>
-    
-    <form method="POST" action="/BMIList/mgm2_url">
-     <input id="name" name="name" type="text" style= "border-style: outset; height: 35px" placeholder="type your name here"> <br><br>
-    <input id="age" name="age" type="text" style= "border-style: outset; height: 35px" placeholder="type your age"> <br><br>
-    <input id="gender" name="gender" type="text" style= "border-style: outset; height: 35px" placeholder="male or female"> <br><br>
-    <input id="height" name="height" type="text" style= "border-style: outset; height: 35px" placeholder="what is your height (in cm)?"> <br><br>
-    <input id="weight" name="weight" type="text" style= "border-style: outset; height: 35px" placeholder="what is your weight (in kg)?"> <br><br>
-    <input type="submit" id="enter" name="enter" value="enter"> <br><br>
-    <input type="hidden">
-    {% csrf_token %}
-   <table id="tableko" style="text-align: center ; margin: 0 auto">
-   	<tr style="text-align:center">
-	   <th> Age </th>
-	   <th> Gender </th>
-	   <th> Height </th>
-	   <th> Weight </th>
-    	</tr>
-        {% for item in Age %}
-   	<tr>
-   		<td>{{ forloop.counter }}: {{ item.text }}</td>
-   	</tr>
-   	{% endfor %}
-   </table>
-    </form>
-    
-    
-    <p>Your BMI
- is: <span id="output"></span></p>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
-    <p>This means you are: </p> 
-<script type="text/javascript">
-        function computeBMI()
-        {
-            //Obtain user inputs
-            var height=Number(document.getElementById("height").value);
-           // var heightunits=document.getElementById("heightunits").value;
-            var weight=Number(document.getElementById("weight").value);
-           // var weightunits=document.getElementById("weightunits").value;
+    <!-- Other CSS Files -->
+    <link rel="stylesheet" href="/static/css/fontawesome.css" />
+    <link rel="stylesheet" href="/static/css/templatemo-style.css" />
+    <link rel="stylesheet" href="/static/css/owl.css" />
+    <link rel="stylesheet" href="/static/css/lightbox.css" />
 
+    <!-- Script for BMI Calculator-->
+    <script src="/static/js/bmi-calculator.js"></script>
 
-            //Convert all units to metric
-           // if (heightunits=="inches") height/=39.3700787;
-           // if (weightunits=="lb") weight/=2.20462;
+  </head>
 
-            //Perform calculation
-            var BMI
-=weight/Math.pow(height,2);
+  <body>
+    <div id="page-wraper">
+      <!-- Sidebar Menu -->
+      <div class="responsive-nav">
+        <i class="fa fa-bars" id="menu-toggle"></i>
+        <div id="menu" class="menu">
+          <i class="fa fa-times" id="menu-close"></i>
+          <div class="container">
+            <div class="image">
+              <a href="#"><img src="/static/images/logo1.png" alt="Hustle Buddy" /></a>
+            </div>
+            <div class="author-content">
+              <h4>Hustle Buddy</h4>
+            </div>
+            <nav class="main-nav" role="navigation">
+              <ul class="main-menu">
+                <li>Username</li>
+                <li><a href="{% url 'index' %}">Benefits of Workout</a></li>
+                <li><a href="{% url 'index' %}#section2">Get Fit! Program</a></li>
+                <li><a href="{% url 'bmi' %}">BMI Calculator</a></li>
+                <li><a href="{% url 'index' %}">About Me</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
 
-            //Display result of calculation
-            document.getElementById("output").innerText=Math.round(BMI
-*100)/100;
+      <section class="section my-work" data-section="section3">
+        <div class="container">
+          <div class="section-heading">
+            <h2>BMI Calculator</h2>
+            <div class="line-dec"></div>
+            <span>
+              <div class="container">
+                <!-- Option for providing height 
+                and weight to the user-->
 
-            if (output<18.5)
-            document.getElementById("comment").value = "Underweight";
-            if (output>=18.5 && output<=25)
-            document.getElementById("comment").value = "Normal";
-            if (output>=25 && output<=30)
-            document.getElementById("comment").value = "Obese";
-            if (output>30)
-            document.getElementById("comment").value = "Overweight";
-            document.getElementById("answer").value = output; 
-        }
-  </script>
+              <p>Height (in cm)</p>
   
-</body>
+              <input type="text" id="height">
+        
+              <p>Weight (in kg)</p>
+  
+              <input type="text" id="weight">
+        
+              <br />
+              <br /><button id="btn">Calculate</button>
+  
+              <div id="result"></div>
+              </div>
+            </span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </body>
 </html>

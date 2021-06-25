@@ -20,10 +20,14 @@ from BMIList import views
 
 
 urlpatterns = [
-    url(r'^$', views.BmiPage, name='bmipage'),
+    url(r'^$', views.LogIn, name='login'),
+    url(r'^ProjectList/signup$', views.SignUp, name='signup'),
+    url(r'^ProjectList/index$', views.Index, name='index'),
+    url(r'^ProjectList/peach$', views.Peachy, name='peach'),
+    url(r'^ProjectList/bmi$', views.BMI, name='bmi'),
     url('admin/',admin.site.urls),
-    url(r'^BMIList/(\d+)/$', views.ViewList, name='mgm'),
-    url(r'^BMIList/mgm2_url$', views.NewList, name='Newlist'),
-    url(r'^BMIList/(\d+)/addItem$', views.AddItem, name='additem'),
+#    url(r'^BMIList/(\d+)/$', views.ViewList, name='mgm'),
+#    url(r'^BMIList/mgm2_url$', views.NewList, name='Newlist'),
+#    url(r'^BMIList/(\d+)/addItem$', views.AddItem, name='additem'),
     #path('admin/', admin.site.urls),
 ]
