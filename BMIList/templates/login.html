@@ -1,11 +1,10 @@
-{%load static%}
 <!DOCTYPE html>
 <html>
 <head>
 <style>
 
 #page-wraper {
-    background: url(/static/images/gg.jpg) no-repeat center center fixed;
+    background: url(static/images/gg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -14,7 +13,7 @@
 }
 
 #page-wraper2 {
-    background: url(/static/images/gg.jpg) no-repeat center center fixed;
+    background: url(static/images/gg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -109,11 +108,11 @@ button:hover {
 <body id="page-wraper">
 
 <div>
-<form action="action_page.php" style="border:1px solid #ccc">
+<form action="/bmi/{{uId.id}}/home" method="POST" style="border:1px solid #ccc">
   <div class="container">
     <center>
     <div class="image">
-        <a href="#"><img src="/static/images/logo1.png" alt="Hustle Buddy" /></a>
+        <a href="#"><img src="static/images/logo1.png" alt="Hustle Buddy" /></a>
       </div>
     </center>
     <hr>
@@ -129,10 +128,10 @@ button:hover {
     </label>
 
     <div class="clearfix">
-      <button type="submit" class="loginbtn"><a href="{% url 'index' %}">Log in</a></button>
+      <button type="submit" class="loginbtn"><a href="">Log in</a></button>
     </div>
   </div>
-    <button type="submit" class="loginbtn">NO ACCOUNT YET?<a href="{% url 'signup' %}"><br />SIGN UP NOW!</a></button>
+    <button type="submit" class="loginbtn">NO ACCOUNT YET?<a href="/bmi/signup"><br />SIGN UP NOW!</a></button>
 </form>
 </div>
 
